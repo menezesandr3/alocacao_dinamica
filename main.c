@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include<malloc.h>
 
 int main (int argc, char *argv[])
 {
@@ -20,6 +21,23 @@ int main (int argc, char *argv[])
 	{
 		//transfere a mensagem para a memoria alocada
 		stropy (memoria_alocada, "Esta eh a melhor aula do mundo!\n");
+	}
+	// exibe o conteudo da memoria alocada
+	printf ("O conteudo da memoria alocada eh: %s\n", memoria_alocada);
+	
+	// altera a quantidade de memoria alocada para (100 x char)
+	memoria_alocada = realloc (memoria_alocada, 100 * sizeof (char));
+	// se o ponteiro foi inicializado com o valor nulo
+	if (memoria_alocada == NULL)
+	{
+		//exibe a mensagem de erro
+		printf ("Nao foi possivel alocar a memoria desejada!\n");
+	}
+	// se o ponteiro nao for nulo
+	else
+	{
+		// transfere a mensagem para a a memoria alocada
+		stropy (memoria_alocada, "Quantidade de memoria alocada alterada!\n");
 	}
 	// exibe o conteudo da memoria alocada
 	printf ("O conteudo da memoria alocada eh: %s\n", memoria_alocada);
